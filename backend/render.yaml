@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: restaurant-backend
+    env: node
+    plan: free
+    branch: main
+    buildCommand: "cd backend && npm install"
+    startCommand: "cd backend && npm start"
+    autoDeploy: true
+    envVars:
+      # Do NOT commit secrets. Set these in Render UI or use a secret manager.
+      - key: GOOGLE_APPLICATION_CREDENTIALS_JSON
+        value: ""  # set this to the raw JSON of the service account in the Render dashboard (secure)
+      - key: PORT
+        value: "10000"
